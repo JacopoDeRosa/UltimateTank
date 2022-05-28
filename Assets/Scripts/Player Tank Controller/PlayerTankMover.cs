@@ -37,6 +37,13 @@ public class PlayerTankMover : MonoBehaviour
         float rightTrackInput = Mathf.Clamp(_moveInput.y + (_moveInput.x * -1), -1, 1);
         float leftTrackInput = Mathf.Clamp(_moveInput.y + _moveInput.x, -1, 1);
 
+        if (GameStatus.controlsLocked)
+        {
+            rightTrackInput = 0;
+            leftTrackInput = 0;
+        }
+       
+
         _leftTrack.SetTorque(leftTrackInput * _motorTorque);
         _rightTrack.SetTorque(rightTrackInput * _motorTorque);
 
@@ -59,6 +66,13 @@ public class TankTrack
         foreach (Wheel wheel in _wheels)
         {
             wheel.Collider.motorTorque = torque;
+        }
+    }
+    public void SetBrake(float torque)
+    {
+        foreach (Wheel wheel in _wheels)
+        {
+            wheel.Collider.brakeTorque = torque;
         }
     }
     public void UpdateTransforms()

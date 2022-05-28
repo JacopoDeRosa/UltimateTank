@@ -39,9 +39,8 @@ public class TankTurretController : MonoBehaviour
 
     private void Update()
     {
-        _turretPointer.Rotate(new Vector3(0, _mouseInput.x * _rotSpeed * Time.deltaTime, 0));
-
-
+        if (GameStatus.controlsLocked) return;
+        RotateTurret();
         RotateCannon();
     }
 
@@ -59,5 +58,10 @@ public class TankTurretController : MonoBehaviour
         }
         _currentElevation += change;
         _cannonPointer.Rotate(new Vector3(change, 0, 0));     
+    }
+
+    private void RotateTurret()
+    {
+        _turretPointer.Rotate(new Vector3(0, _mouseInput.x * _rotSpeed * Time.deltaTime, 0));
     }
 }
