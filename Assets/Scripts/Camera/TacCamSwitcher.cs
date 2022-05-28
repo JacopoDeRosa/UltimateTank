@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
+
 
 public class TacCamSwitcher : MonoBehaviour
 {
     [SerializeField] private GameObject _tacCam;
     [SerializeField] private PlayerInput _input;
 
+
+    public UnityEvent onTacCamEnter;
+    public UnityEvent onTacCamExit;
 
     private void Awake()
     {
@@ -31,12 +36,15 @@ public class TacCamSwitcher : MonoBehaviour
         {
             _tacCam.SetActive(false);
             GameStatus.controlsLocked = false;
+            onTacCamExit.Invoke();
         }
         else
         {
             _tacCam.SetActive(true);
             GameStatus.controlsLocked = true;
+            onTacCamEnter.Invoke();
         }
+
 
     }
 }

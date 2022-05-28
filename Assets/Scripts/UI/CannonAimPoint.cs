@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class CannonAimPoint : MonoBehaviour
 {
-    [SerializeField] private Graphic _trueAimPoint, _wantedAimPoint;
-    [SerializeField] private Transform _cannon, _cannonPointer;
+    [SerializeField] private Graphic _trueAimPoint;
+    [SerializeField] private Transform _cannon;
     [SerializeField] private float _zeroPoint;
 
 
+  
     private void Update()
     {
-        _trueAimPoint.transform.position = Camera.main.WorldToScreenPoint(_cannon.forward * _zeroPoint);
-        _wantedAimPoint.transform.position = Camera.main.WorldToScreenPoint(_cannonPointer.forward * _zeroPoint);
+        Ray ray = new Ray(_cannon.position, _cannon.forward);
+        Vector3 pos = ray.GetPoint(_zeroPoint);
+        _trueAimPoint.transform.position = Camera.main.WorldToScreenPoint(pos);
     }
 }

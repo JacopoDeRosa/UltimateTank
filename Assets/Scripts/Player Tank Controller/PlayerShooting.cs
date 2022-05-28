@@ -6,10 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private Vector3 _recoil;
-    [SerializeField] private float _timeBetweenShots;
     [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private Transform _cannonMuzzle;
-    [SerializeField] private ParticleSystem _cannonShotParticle;
+    [SerializeField] private Cannon _cannon;
     [SerializeField] private MachineGun _coaxMachineGun;
     [SerializeField] private PlayerInput _input;
 
@@ -39,9 +37,13 @@ public class PlayerShooting : MonoBehaviour
     {
         if (GameStatus.controlsLocked) return;
 
-        _rigidbody.AddForceAtPosition(_cannonMuzzle.TransformDirection(_recoil), _cannonMuzzle.position, ForceMode.Impulse);
-        _cannonShotParticle.Play();
-        print("Pew");
+       
+        if(_cannon.Fire())
+        {
+            _rigidbody.AddForceAtPosition(_cannon.transform.TransformDirection(_recoil), _cannon.transform.position, ForceMode.Impulse);
+            print("Pew");
+        }
+      
     }
 
     private void OnFire2Down(InputAction.CallbackContext context)
