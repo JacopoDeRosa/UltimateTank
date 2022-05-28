@@ -8,9 +8,14 @@ public class TankTurretController : MonoBehaviour
     [SerializeField] private Transform _turretPointer, _cannonPointer;
     [SerializeField] private float _rotSpeed;
     [SerializeField] private PlayerInput _input;
-    [SerializeField] private bool _invertMouseY;
+    [SerializeField] private float _maxElevation, _minElevation;
+
+
     [SerializeField]
     private Vector2 _mouseInput;
+
+    [SerializeField]
+    private float _currentElevation;
 
     private void Awake()
     {
@@ -35,13 +40,24 @@ public class TankTurretController : MonoBehaviour
     private void Update()
     {
         _turretPointer.Rotate(new Vector3(0, _mouseInput.x * _rotSpeed * Time.deltaTime, 0));
-        if (_invertMouseY)
+
+
+        RotateCannon();
+    }
+
+    private void RotateCannon()
+    {
+        float change = _mouseInput.y * _rotSpeed * -1 * Time.deltaTime; 
+
+        if (_currentElevation >= _minElevation && _mouseInput.y < 0)
         {
-            _cannonPointer.Rotate(new Vector3(_mouseInput.y * _rotSpeed * -1 * Time.deltaTime, 0, 0));
+            return;
         }
-        else
+        else if(_currentElevation <= _maxElevation && _mouseInput.y > 0)
         {
-            _cannonPointer.Rotate(new Vector3(_mouseInput.y * _rotSpeed * Time.deltaTime, 0, 0));
+            return;
         }
+        _currentElevation += change;
+        _cannonPointer.Rotate(new Vector3(change, 0, 0));     
     }
 }
