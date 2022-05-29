@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TankTurretController : MonoBehaviour
+public class PlayerTurretController : MonoBehaviour
 {
     [SerializeField] private Transform _turretPointer, _cannonPointer;
     [SerializeField] private float _rotSpeed;
