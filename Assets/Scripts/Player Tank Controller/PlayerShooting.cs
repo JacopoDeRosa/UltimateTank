@@ -13,7 +13,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private PlayerInput _input;
 
 
-    private void Awake()
+    private void OnEnable()
     {
         if(_input)
         {
@@ -23,7 +23,8 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+
+    private void OnDisable()
     {
         if (_input)
         {

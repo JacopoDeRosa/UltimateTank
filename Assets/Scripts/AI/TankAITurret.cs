@@ -9,6 +9,12 @@ public class TankAITurret : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private float _minElevation, _maxElevation;
 
+    private void Awake()
+    {
+        if (_target == null) _target = FindObjectOfType<PlayerTankMover>().transform;
+        if (_target == null) Destroy(this);
+    }
+
     private void Update()
     {
         RotateTurret();

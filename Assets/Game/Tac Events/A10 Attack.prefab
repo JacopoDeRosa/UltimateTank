@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2588560699267285250}
   - component: {fileID: 2588560699267285252}
   - component: {fileID: 2588560699267285251}
+  - component: {fileID: 5462737596911668613}
   m_Layer: 0
   m_Name: Bullets
   m_TagString: Untagged
@@ -4910,6 +4911,34 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5462737596911668613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2588560699267285249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268d65e7f1aaaf744bb9592d3b5a0541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetSystem: {fileID: 2588560699267285252}
+  onParticleCollision:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835138939}
+        m_TargetAssemblyTypeName: A10Attack, Assembly-CSharp
+        m_MethodName: OnParticleHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2941975214105908439
 GameObject:
   m_ObjectHideFlags: 0
@@ -5287,6 +5316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7023908955923202676}
   - component: {fileID: 7652248362817460431}
+  - component: {fileID: 1835138939}
   m_Layer: 0
   m_Name: A10 Attack
   m_TagString: Untagged
@@ -5333,3 +5363,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1835138939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7652248362817460430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765862f8fb8f032419c8b1628e33e8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 2

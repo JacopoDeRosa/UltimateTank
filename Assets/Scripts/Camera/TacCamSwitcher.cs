@@ -37,12 +37,14 @@ public class TacCamSwitcher : MonoBehaviour
             _tacCam.SetActive(false);
             GameStatus.controlsLocked = false;
             onTacCamExit.Invoke();
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else
         {
             _tacCam.SetActive(true);
             GameStatus.controlsLocked = true;
             onTacCamEnter.Invoke();
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
 

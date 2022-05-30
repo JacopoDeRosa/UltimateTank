@@ -30,6 +30,7 @@ public class PlayerTankMover : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         _moveInput = context.ReadValue<Vector2>();
+        print("On Move");
     }
 
     void Update()

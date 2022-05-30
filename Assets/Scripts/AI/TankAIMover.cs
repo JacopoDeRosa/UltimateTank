@@ -22,6 +22,13 @@ public class TankAIMover : MonoBehaviour
     {
         Gizmos.DrawSphere(transform.rotation * Vector3.forward, 0.5f);
     }
+
+    private void Awake()
+    {
+        if (_target == null) _target = FindObjectOfType<PlayerTankMover>().transform;
+        if (_target == null) Destroy(this);
+    }
+
     private void Update()
     {
         CalculateDistanceFromTarget();
@@ -98,5 +105,10 @@ public class TankAIMover : MonoBehaviour
 
         _leftTrack.UpdateTransforms();
         _rightTrack.UpdateTransforms();
+    }
+
+    public void OnDeath()
+    {
+        Destroy(gameObject);
     }
 }
