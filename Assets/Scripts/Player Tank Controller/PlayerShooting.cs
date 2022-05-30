@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private Vector3 _recoil;
+    [SerializeField] private float _damage;
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Cannon _cannon;
     [SerializeField] private MachineGun _coaxMachineGun;
@@ -41,7 +42,6 @@ public class PlayerShooting : MonoBehaviour
         if(_cannon.Fire())
         {
             _rigidbody.AddForceAtPosition(_cannon.transform.TransformDirection(_recoil), _cannon.transform.position, ForceMode.Impulse);
-            print("Pew");
         }
       
     }
@@ -53,5 +53,14 @@ public class PlayerShooting : MonoBehaviour
     private void OnFire2Up(InputAction.CallbackContext context)
     {
         _coaxMachineGun.ToggleFire(false);
+    }
+
+    public void OnCannonHit(ParticleCollisionEvent collisionEvent)
+    {
+        var hitbox = collisionEvent.colliderComponent.gameObject.GetComponent<HitboxPiece>();
+        if (hitbox != null)
+        {
+            hitbox.Hit(_damage);
+        }
     }
 }
