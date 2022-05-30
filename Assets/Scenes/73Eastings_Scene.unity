@@ -453,7 +453,6 @@ MonoBehaviour:
     type: 3}
   _lifeTime: 10
   _scoreKeeper: {fileID: 944760495}
-  _input: {fileID: 1548534669}
 --- !u!4 &322876666
 Transform:
   m_ObjectHideFlags: 0
@@ -1452,7 +1451,6 @@ MonoBehaviour:
     type: 3}
   _lifeTime: 13
   _scoreKeeper: {fileID: 944760495}
-  _input: {fileID: 1548534669}
 --- !u!1 &804734796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,6 +2761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1548534670}
   - component: {fileID: 1548534669}
+  - component: {fileID: 1548534671}
   m_Layer: 0
   m_Name: Player Input
   m_TagString: Untagged
@@ -2816,6 +2815,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1548534671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548534668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02cbebcbff86856418ff4f2c675b3b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1565659605
 GameObject:
   m_ObjectHideFlags: 0
@@ -3214,7 +3225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tacCam: {fileID: 806445078}
-  _input: {fileID: 1548534669}
   onTacCamEnter:
     m_PersistentCalls:
       m_Calls:
@@ -14377,11 +14387,8 @@ MonoBehaviour:
   _turretPointer: {fileID: 1163395288}
   _cannonPointer: {fileID: 1394777184}
   _rotSpeed: 5
-  _input: {fileID: 1548534669}
   _maxElevation: -10
   _minElevation: 15
-  _mouseInput: {x: 0, y: 0}
-  _currentElevation: 0
 --- !u!54 &919132148502566593
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14435,7 +14442,6 @@ MonoBehaviour:
     - _collider: {fileID: 1966542823}
       _wheel: {fileID: 3002933296997867711}
   _motorTorque: 500
-  _input: {fileID: 1548534669}
   _moveInput: {x: 0, y: 0}
 --- !u!114 &919132148502566595
 MonoBehaviour:
@@ -14454,7 +14460,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 919132148502566593}
   _cannon: {fileID: 1462900617}
   _coaxMachineGun: {fileID: 1915373721}
-  _input: {fileID: 1548534669}
 --- !u!114 &919132148502566596
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,18 +7,18 @@ public class PlayerTurretController : MonoBehaviour
 {
     [SerializeField] private Transform _turretPointer, _cannonPointer;
     [SerializeField] private float _rotSpeed;
-    [SerializeField] private PlayerInput _input;
     [SerializeField] private float _maxElevation, _minElevation;
 
-
-    [SerializeField]
+    private PlayerInput _input;
     private Vector2 _mouseInput;
-
-    [SerializeField]
     private float _currentElevation;
 
-    private void Awake()
+    private void Start()
     {
+        if(_input == null)
+        {
+            _input = FindObjectOfType<PlayerInput>();
+        }
         if (_input)
         {
             _input.actions["Look"].performed += OnLook;

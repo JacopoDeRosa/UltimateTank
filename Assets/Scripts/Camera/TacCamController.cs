@@ -10,7 +10,11 @@ public class TacCamController : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_input)
+        if (_input == null)
+        {
+            _input = FindObjectOfType<PlayerInput>();
+        }
+        if (_input)
         {
             _input.actions["Scroll"].performed += OnScroll;
         }

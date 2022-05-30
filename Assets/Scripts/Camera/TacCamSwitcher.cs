@@ -8,15 +8,20 @@ using UnityEngine.Events;
 public class TacCamSwitcher : MonoBehaviour
 {
     [SerializeField] private GameObject _tacCam;
-    [SerializeField] private PlayerInput _input;
+    
+    private PlayerInput _input;
 
 
     public UnityEvent onTacCamEnter;
     public UnityEvent onTacCamExit;
 
-    private void Awake()
+    private void Start()
     {
-        if(_input)
+        if (_input == null)
+        {
+            _input = FindObjectOfType<PlayerInput>();
+        }
+        if (_input)
         {
             _input.actions["TacCam"].started += OnTacCam;
         }

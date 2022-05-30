@@ -11,7 +11,8 @@ public class TacAction : MonoBehaviour
     [SerializeField] private float _lifeTime;
 
     [SerializeField] private ScoreKeeper _scoreKeeper;
-    [SerializeField] private PlayerInput _input;
+    
+    private PlayerInput _input;
 
 
 
@@ -19,9 +20,13 @@ public class TacAction : MonoBehaviour
     private Vector2 _pointerPos;
     private Vector3 _spawnPoint;
 
-    private void OnEnable()
+    private void Start()
     {
-        if(_input)
+        if (_input == null)
+        {
+            _input = FindObjectOfType<PlayerInput>();
+        }
+        if (_input)
         {
             _input.actions["PointerPos"].performed += OnPointerPos;
             _input.actions["Cancel"].started += OnCancel;

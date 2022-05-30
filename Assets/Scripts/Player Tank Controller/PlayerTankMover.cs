@@ -7,13 +7,20 @@ public class PlayerTankMover : MonoBehaviour
 {
     [SerializeField] private TankTrack _leftTrack, _rightTrack;
     [SerializeField] private float _motorTorque;
-    [SerializeField] private PlayerInput _input;
+
+    private PlayerInput _input;
 
     [SerializeField]
     private Vector2 _moveInput;
 
-    private void Awake()
+    private void Start()
     {
+        if (_input == null)
+        {
+            print("Find Input");
+            _input = FindObjectOfType<PlayerInput>();
+        }
+
         if (_input)
         {
             _input.actions["Move"].performed += OnMove;

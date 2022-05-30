@@ -10,11 +10,16 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Cannon _cannon;
     [SerializeField] private MachineGun _coaxMachineGun;
-    [SerializeField] private PlayerInput _input;
+    
+    private PlayerInput _input;
 
 
-    private void OnEnable()
+    private void Start()
     {
+        if(_input == null)
+        {
+            _input = FindObjectOfType<PlayerInput>();
+        }
         if(_input)
         {
             _input.actions["Fire"].started += OnFire;
@@ -24,7 +29,7 @@ public class PlayerShooting : MonoBehaviour
     }
 
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (_input)
         {
